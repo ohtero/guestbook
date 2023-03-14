@@ -16,14 +16,21 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto excepturi facilis quaerat dolorum doloribus minus iste quibusdam sequi? Incidunt sint sunt qui doloremque non labore sequi ex dicta tenetur quaerat tempora temporibus veniam magni nam laborum minus voluptates omnis, consequuntur mollitia quos, rerum repellendus recusandae? Officiis saepe iure nobis qui?
             </p>
         </div> -->
-        <table>
-            <% data.forEach(post => { %>       
-                <tr><td><%- post.name %></td></tr>
-                <tr><td><%- post.country %></td></tr>
-                <tr><td><%- post.message %></td></tr>
+        <!-- <table>
+            <% messages.forEach(({ name, country, message }) => { %>       
+                <tr><td><%- name %></td></tr>
+                <tr><td><%- country %></td></tr>
+                <tr><td><%- message %></td></tr>
             <% }); %> 
-        </table>
-    </div>  
+        </table> -->
+        <% messages.forEach(({ name, country, message }) => { %>            
+        <div class="guestbook-entry flex flex-col">
+            <div><b><%- name %></b></div>
+            <div><i><%- country %></i></div>
+            <div class="poster-msg"><%- message %></div>
+        </div>
+        <% }); %>  
+    </div> 
 
 </main>
 </body>
