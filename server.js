@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require('cors')
 const axios = require('axios')
 const PORT = process.env.PORT || 3000;
 
@@ -10,6 +11,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
+app.use(cors())
 
 
 
@@ -46,9 +48,12 @@ app.post("/newmessage", urlencodedParser, (req, res) => {
 });
 
 app.get("/ajaxmessage", (req, res) => {
-
   res.render("pages/ajaxmessage")
 });
+
+app.post('/ajaxmessage', (req, res) => {
+
+})
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
 
