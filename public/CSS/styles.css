@@ -1,0 +1,115 @@
+:root {
+    --msg-bg: #eee;
+}
+
+
+*, before *, after * {
+    box-sizing: border-box;    
+    margin: 0;
+}
+
+
+
+html {
+
+    background: #234;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+/* Utility classes */
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-center {
+justify-content: center;
+align-items: center;
+}
+
+/* Main styles */
+
+
+h1 {
+    margin: 3rem 0;
+}
+
+nav {
+
+    background: var(--msg-bg);
+    width: 100%;
+    padding: 0.5rem;
+    gap: 1rem;
+    border: solid #755 2px;
+}
+
+nav > *::before,::after {
+    cursor: default;
+    color: black;   
+}
+
+nav > *::before {
+    content: "|";
+    padding-right: 1rem;
+}
+
+nav > :last-child::after{
+    content: "|";
+    padding-left: 1rem;
+}
+
+
+form {
+    width: 100%;
+}
+
+form input, 
+textarea {
+    flex-grow: 1;
+}
+
+form textarea {
+    max-width: 85%;
+    max-height: 10rem;
+    min-height: 10rem;
+}
+
+label {
+    width: 15%;
+}
+
+input[type="submit"] {
+    width: 3rem;
+    align-self: center;
+}
+
+.messages-wrapper,
+form {
+    width: 30%;
+    gap: 1.5rem;
+}
+
+.guestbook-entry,
+ form {
+    background: var(--msg-bg);
+    border-radius: 5px;
+    box-shadow: black 0px 0px 15px 2px;
+    gap: 0.5rem;
+    padding: 1.5rem;
+}
+
+.poster-msg {
+    border-top: solid 1px;
+    padding-top: .5rem;
+}
+
+
+

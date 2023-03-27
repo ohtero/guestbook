@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<header>
+<%- include('../partials/header') %> 
+</header>
+<main class="flex flex-center">
+    <div class="messages-wrapper flex flex-col" id="messages">
+        <!-- <div class="message flex flex-col">
+            <p class="posterName">name</p>
+            <p class="posterCity">city</p>
+            <p class="posterMessage">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto excepturi facilis quaerat dolorum doloribus minus iste quibusdam sequi? Incidunt sint sunt qui doloremque non labore sequi ex dicta tenetur quaerat tempora temporibus veniam magni nam laborum minus voluptates omnis, consequuntur mollitia quos, rerum repellendus recusandae? Officiis saepe iure nobis qui?
+            </p>
+        </div> -->
+        <!-- <table>
+            <% messages.forEach(({ name, country, message }) => { %>       
+                <tr><td><%- name %></td></tr>
+                <tr><td><%- country %></td></tr>
+                <tr><td><%- message %></td></tr>
+            <% }); %> 
+        </table> -->
+        <% messages.forEach(({ name, country, message }) => { %>            
+        <div class="guestbook-entry flex flex-col">
+            <div><b><%- name %></b></div>
+            <div><i><%- country %></i></div>
+            <div class="poster-msg"><%- message %></div>
+        </div>
+        <% }); %>  
+    </div> 
+
+</main>
+</body>
+</html>
