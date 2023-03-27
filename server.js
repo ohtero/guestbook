@@ -46,6 +46,7 @@ app.post("/newmessage", urlencodedParser, (req, res) => {
 
 app.get("/ajaxmessage", (req, res) => {
   res.render("pages/ajaxmessage")
+  res.send('')
 });
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
