@@ -12,6 +12,7 @@ app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
 
+
 app.get("/", (req, res) => {
   res.render("pages/index");
 });
@@ -45,8 +46,8 @@ app.post("/newmessage", urlencodedParser, (req, res) => {
 });
 
 app.get("/ajaxmessage", (req, res) => {
+
   res.render("pages/ajaxmessage")
-  res.send('')
 });
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
