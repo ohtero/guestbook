@@ -1,19 +1,23 @@
 const express = require("express");
 const app = express();
-const cors = require('cors')
-const axios = require('axios')
+const cors = require("cors");
+const axios = require("axios");
 const PORT = process.env.PORT || 3000;
+
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/'});
 
 const fs = require("fs");
 
+const savedMessages = require("./messages.json");
+
 const bodyParser = require("body-parser");
+const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
-app.use(cors())
-
-
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.render("pages/index");
@@ -36,7 +40,7 @@ app.post("/newmessage", urlencodedParser, (req, res) => {
       this.message = message;
     }
   }
-  const savedMessages = require("./messages.json");
+
   const newMessage = new Message(
     req.body.name,
     req.body.country,
@@ -48,12 +52,17 @@ app.post("/newmessage", urlencodedParser, (req, res) => {
 });
 
 app.get("/ajaxmessage", (req, res) => {
-  res.render("pages/ajaxmessage")
+  res.render("pages/ajaxmessage");
 });
 
-app.post('/ajaxmessage', (req, res) => {
+app.post("/ajaxmessage", jsonParser, (req, res) => {
+  if (req) {
+    savedMessages.unshift(req.body);
+    fs.writeFileSync("./messages.json", JSON.stringify(savedMessages));
+    console.log(req.body);
+  }
+  // res.render("pages/ajaxmessage")
 
-})
+});
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
-

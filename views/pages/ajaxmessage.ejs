@@ -8,7 +8,8 @@
 <%- include('../partials/header') %> 
 </header>
 <main class="flex flex-center">
-  <form class="flex flex-col">
+
+  <form action="javascript:void(0);" class="flex flex-col" id="form">
     <div class="flex">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" maxlength="50" required>
@@ -21,9 +22,8 @@
         <label for="message">Message:</label>
         <textarea rows="10" name="message" id="message" maxlength="500"></textarea>
     </div>
-    <input type="submit" value="submit">
+    <input type="submit" value="submit" id="post">
   </form>  
-  <button id="post">post</button>
   </main>
 </body>
 </html>
