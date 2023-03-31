@@ -1,38 +1,36 @@
 const express = require("express");
+const fs = require("fs");
 const app = express();
-const cors = require("cors");
-const axios = require("axios");
 const PORT = process.env.PORT || 3000;
 
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/'});
-
-const fs = require("fs");
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const savedMessages = require("./messages.json");
 
-const bodyParser = require("body-parser");
-const jsonParser = bodyParser.json();
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-app.use(express.static(__dirname + "/public"));
-app.set("view engine", "ejs");
-app.use(cors());
+// page routings
 
 app.get("/", (req, res) => {
   res.render("pages/index");
 });
 
 app.get("/guestbook", (req, res) => {
-  const messages = require("./messages.json");
-  res.render("pages/guestbook", { messages: messages });
+  res.render("pages/guestbook", { messages: savedMessages });
 });
 
 app.get("/newmessage", (req, res) => {
   res.render("pages/newmessage");
 });
 
-app.post("/newmessage", urlencodedParser, (req, res) => {
+app.get("/ajaxmessage", (req, res) => {
+  res.render("pages/ajaxmessage", { messages: savedMessages });
+});
+
+// post request handling
+
+app.post("/newmessage", (req, res) => {
   class Message {
     constructor(name, country, message) {
       this.name = name;
@@ -51,18 +49,12 @@ app.post("/newmessage", urlencodedParser, (req, res) => {
   res.render("pages/newmessage");
 });
 
-app.get("/ajaxmessage", (req, res) => {
-  res.render("pages/ajaxmessage");
-});
-
-app.post("/ajaxmessage", jsonParser, (req, res) => {
+app.post("/ajaxmessage", (req, res) => {
   if (req) {
     savedMessages.unshift(req.body);
     fs.writeFileSync("./messages.json", JSON.stringify(savedMessages));
-    console.log(req.body);
+    res.send(savedMessages);
   }
-  // res.render("pages/ajaxmessage")
-
 });
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));

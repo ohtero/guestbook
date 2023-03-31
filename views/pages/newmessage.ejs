@@ -3,12 +3,13 @@
 <head>
 <%- include('../partials/head') %>
 </head>
-<body>
+<%- include('../partials/body') %>
 <header>
 <%- include('../partials/header') %> 
 </header>
-<main class="flex flex-center">
+<main class="flex flex-col items-center gap-y-4">
 <%- include('../partials/form') %>
+<button class="bg-emerald-300 p-4 border-4 border-emerald-500 rounded-lg hover:bg-emerald-200 hover:border-emerald-400 w-1/6 shadow-lg"><a href="/guestbook" class="font-bold tracking-wide">Go To Guestbook</a></button>
 </main>
 </body>
 </html>

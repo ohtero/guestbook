@@ -3,35 +3,22 @@
 <head>
 <%- include('../partials/head') %>
 </head>
-<body>
+<%- include('../partials/body') %>
 <header>
 <%- include('../partials/header') %> 
 </header>
-<main class="flex flex-center">
-    <div class="messages-wrapper flex flex-col" id="messages">
-        <!-- <div class="message flex flex-col">
-            <p class="posterName">name</p>
-            <p class="posterCity">city</p>
-            <p class="posterMessage">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto excepturi facilis quaerat dolorum doloribus minus iste quibusdam sequi? Incidunt sint sunt qui doloremque non labore sequi ex dicta tenetur quaerat tempora temporibus veniam magni nam laborum minus voluptates omnis, consequuntur mollitia quos, rerum repellendus recusandae? Officiis saepe iure nobis qui?
-            </p>
-        </div> -->
-        <!-- <table>
-            <% messages.forEach(({ name, country, message }) => { %>       
-                <tr><td><%- name %></td></tr>
-                <tr><td><%- country %></td></tr>
-                <tr><td><%- message %></td></tr>
-            <% }); %> 
-        </table> -->
+<main class="flex justify-center w-full">
+    <div class="flex flex-col w-1/3 gap-y-4 p-8 bg-gray-300 bg-opacity-40 rounded shadow-lg">
         <% messages.forEach(({ name, country, message }) => { %>            
-        <div class="guestbook-entry flex flex-col">
-            <div><b><%- name %></b></div>
-            <div><i><%- country %></i></div>
+        <div class="flex flex-col gap-y-4 p-8 bg-gray-100 bg-opacity-60 rounded shadow-md">
+            <div class="name"><b><%- name %></b></div>
+            <div class="country"><i><%- country %></i></div>
             <div class="poster-msg"><%- message %></div>
         </div>
         <% }); %>  
-    </div> 
+    </div>  
 
 </main>
+<%- include('../partials/footer') %>
 </body>
 </html>
