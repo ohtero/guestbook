@@ -1,8 +1,15 @@
 module.exports = {  
   content: ["./views/*/*.ejs",
-            "./public/scripts.scripts.js"],
+            "./public/scripts.scripts.js"
+          ],
 
-  theme: {    extend: {},  },  
+  theme: {    
+    extend: {
+      backgroundImage: {
+        'body': "url('../images/body.jpg')"
+      },
+    },  
+  },  
   plugins: [
     require('@tailwindcss/forms')
   ]

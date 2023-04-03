@@ -11,13 +11,13 @@ function parseMessage(name, country, message){
   let newCountry = document.createElement('div');
   let newMessage = document.createElement('div');
 
-  wrappedMessage.className = 'flex flex-col gap-y-2 p-8 bg-gray-100 bg-opacity-60 rounded shadow-md';
+  wrappedMessage.className = 'flex flex-col gap-y-1 p-8 bg-gray-100 bg-opacity-60 rounded shadow-md';
   newName.innerHTML = name;
   newName.className = 'font-bold';
   newCountry.innerHTML = country;
   newCountry.className = 'italic';
   newMessage.innerHTML = message;
-  newMessage.className = 'border-t-2 border-slate-500';
+  newMessage.className = 'border-t-2 border-slate-500 pt-2';
   wrappedMessage.appendChild(newName);
   wrappedMessage.appendChild(newCountry);
   wrappedMessage.appendChild(newMessage);
